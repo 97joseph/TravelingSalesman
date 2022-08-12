@@ -15,7 +15,7 @@ Training a model from large synthetically (randomly) generated TSP instances.
 Generalization to new problems with different number of nodes.
 Quick inference time, relative to traditional optimization methods.
 
-https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2022/05/23/song_traveling-salesperson_f3-routing-blog-demo-2-low.gif
+![song_traveling-salesperson_f1-learning_tsp_decoder](https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2022/05/23/song_traveling-salesperson_f3-routing-blog-demo-2-low.gif)
 
 We are interested in applying open source TSP deep reinforcement learning algorithms in solving practical problems. In particular, we found the following capabilities important to successfully deploy RL-based solutions for supply chain operations:
 
