@@ -39,3 +39,17 @@ The idea behind the Attention mechanism is to decode the routes in an autoregres
 
 ![song_traveling-salesperson_f1-learning_tsp_decoder](https://user-images.githubusercontent.com/33089347/184277823-b46f0c4a-ac68-4d98-81cc-50b233b400b4.png)
 
+Figure 1 shows the encoding and decoding processes based on Chaitanya Joshi’s repository. The dark gray rectangles during encoding represent various “fixed” embeddings projected from the original input—a set of nodes (Euclidean coordinates) and the nearest neighbor (NN) graph. The evolving state (the white box, bottom right), together with the fixed Node Embedding, is continuously projected onto the embedding known as Step Context (white rectangle) as the decoding process unfolds at a given step.
+
+The State contains Node Embeddings of the first and last selected nodes in the partial tour. In this example, the first and fourth nodes’ Node Embeddings are included in the State. Fixed Context and Step Context are summed together to form the Query. Cross-product is performed between the Query and the Glimpse Key to form the Attention Score, which projects the Glimpse Values to the Logit Query.
+
+Finally, another cross-product is performed between the Logit Key and the Logit Query to produce the final Logit Attention Score. This becomes the probability distribution from which the next unvisited node is drawn to join the partial tour.
+
+The training approach utilizes the Reinforcement Learning Policy Gradient method called REINFORCE. The model training mechanics will look similar to the traditional Supervised Learning paradigm; however, there are a few key differences:
+
+Rather than calculating the loss in relationship to ground truth labels, the training tries to minimize the total tour length.
+
+-Introducing a baseline learner to achieve faster convergence of the parameters during training. The baseline does not need to be created before training but can be incrementally updated during the training process itself.
+-Rather than making “predictions” for each route, the model is actually creating a policy (that is, a sequence of consecutive decisions) that recommends which node to connect next given the partially formed tour and the set of unvisited nodes.
+
+
